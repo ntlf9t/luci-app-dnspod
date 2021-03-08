@@ -73,17 +73,15 @@ function getPublicIp() {
 
     case $IPtype in
         '1')
-            #WanIp=`curl -4 -s 'https://api.myip.com' | grep ip |sed 's/.*ip":"\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\)".*/\1/g'`
-			WanIp=`curl -sL --connect-timeout 3 14.215.150.17:6666`
+            WanIp=`curl -4 -s 'https://api.myip.com' | grep ip |sed 's/.*ip":"\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\)".*/\1/g'`
             echo $WanIp
             ;;
         '2')
-            #WanIp=`curl -4 -s 'http://ip-api.com/json/?fields=query' | grep query |sed 's/.*query":"\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\)".*/\1/g'`
-			WanIp=`curl -sL --connect-timeout 3 members.3322.org/dyndns/getip`
+            WanIp=`curl -4 -s 'http://ip-api.com/json/?fields=query' | grep query |sed 's/.*query":"\([0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\)".*/\1/g'`
             echo $WanIp
             ;;
         '3')
-			WanIp=`curl -4 -s 'https://ipapi.co/ip/'`
+	    WanIp=`curl -4 -s 'https://ipapi.co/ip/'`
             echo $WanIp
             ;;
         '4')
