@@ -282,10 +282,10 @@ arDdnsUpdate() {
 	fi
 
     # Get Record ID
-    recordID=$(arApiPost "Record.List" "domain_id=${domainID}&sub_domain=${2}&record_type=${record_types}&record_line=默认")
+    recordID=$(arApiPost "Record.List" "domain_id=${domainID}&sub_domain=${2}&record_type=${record_types}&record_line=%e9%bb%98%e8%ae%a4")
     recordID=$(echo $recordID | sed 's/.*"id":"\([0-9]*\)".*/\1/')
     
-    recordRS=$(arApiPost "$post_type" "domain_id=${domainID}&record_id=${recordID}&sub_domain=${2}&record_type=${record_types}&value=${myIP}&record_line=默认")
+    recordRS=$(arApiPost "$post_type" "domain_id=${domainID}&record_id=${recordID}&sub_domain=${2}&record_type=${record_types}&value=${myIP}&record_line=%e9%bb%98%e8%ae%a4")
     recordCD=$(echo $recordRS | sed 's/.*{"code":"\([0-9]*\)".*/\1/')
 
     # Output IP
