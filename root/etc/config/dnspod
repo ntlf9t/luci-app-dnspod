@@ -1,7 +1,7 @@
 
 config base_arg 'base_arg'
 	option enabled '0'
-	option time '600'
+	option time '667'
 
 config domain_name
 	option record_type 'AAAA'

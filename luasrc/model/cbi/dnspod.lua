@@ -26,7 +26,7 @@ enable.default = 0
 enable.rmempty = false
 
 o = s:option(Value,"time",translate("Inspection Time"),translate("域名检查间隔时间，单位秒"))
-o.default = 600
+o.default = 667
 o.rmempty=false
 
 o = s:option(Button,"delete",translate("删除全部域名记录"))

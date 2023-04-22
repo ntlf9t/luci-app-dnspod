@@ -8,7 +8,7 @@
 # Edited by dz
 #################################################
 enable=1
-sleeptime=60
+sleeptime=667
 ip_mode=2
 WanIp=""
 LastIpFile=/usr/share/dnspod/last.ip
