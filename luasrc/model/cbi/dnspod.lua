@@ -50,18 +50,30 @@ o:value("5", translate("本地获取"))
 o.default = 1
 
 o = s:option(Value, "iface", translate("选择接口"))
+o:value("wan2", translate("WAN2"))
 o:value("wan", translate("WAN"))
 o:value("lan", translate("LAN"))
 o.default = "wan"
 o:depends("IPtype", "5")
 
+o = s:option(Value, "ipv4linenumber", translate("ipv4选择"))
+o:value("1p", translate("第一行"))
+o:value("2p", translate("第二行"))
+o:value("3p", translate("第三行"))
+o:value("4p", translate("第四行"))
+o:value("5p", translate("第五行"))
+o:value("6p", translate("第六行"))
+o.default = "1p"
+o:depends("IPtype", "5")
+
 o = s:option(Value, "ipv6iface", translate("ipv6选择接口"))
+o:value("wan2", translate("WAN2"))
 o:value("wan", translate("WAN"))
 o:value("lan", translate("LAN"))
 o.default = "lan"
 o:depends("IPtype", "5")
 
-o = s:option(Value, "linenumber", translate("ipv6选择"))
+o = s:option(Value, "ipv6linenumber", translate("ipv6选择"))
 o:value("1p", translate("第一行"))
 o:value("2p", translate("第二行"))
 o:value("3p", translate("第三行"))
