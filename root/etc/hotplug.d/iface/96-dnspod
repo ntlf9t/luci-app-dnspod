@@ -5,5 +5,5 @@
 sleep 10
 enable=$(uci get dnspod.base_arg.enabled 2>/dev/null)
 if [ $enable -eq 1 ]; then
-	bash /usr/share/dnspod/ddnspod.sh > /var/log/ddnspod1.log
+	/etc/init.d/dnspod restart
 fi
