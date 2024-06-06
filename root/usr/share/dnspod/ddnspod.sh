@@ -18,7 +18,8 @@ enable=$(uci get dnspod.base_arg.enabled 2>/dev/null)
 IPtype=$(uci get dnspod.@ip_last[0].IPtype 2>/dev/null)
 iface=$(uci get dnspod.@ip_last[0].iface 2>/dev/null)
 ipv6iface=$(uci get dnspod.@ip_last[0].ipv6iface 2>/dev/null)
-linenumber=$(uci get dnspod.@ip_last[0].linenumber 2>/dev/null)
+ipv4linenumber=$(uci get dnspod.@ip_last[0].ipv4linenumber 2>/dev/null)
+ipv6linenumber=$(uci get dnspod.@ip_last[0].ipv6linenumber 2>/dev/null)
 
 clean_log(){
 logrow=$(grep -c "" ${logfile})
@@ -60,7 +61,7 @@ function getPublicIp() {
             echo $WanIp
             ;;
         '5')
-            WanIp=`ubus call network.interface.$ipv6iface status | grep '"address"' | grep -oE '([a-f0-9]{1,4}(:[a-f0-9]{1,4}){7}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){0,7}::[a-f0-9]{0,4}(:[a-f0-9]{1,4}){0,7})' |sed -n ''$linenumber''`
+            WanIp=`ubus call network.interface.$ipv6iface status | grep '"address"' | grep -oE '([a-f0-9]{1,4}(:[a-f0-9]{1,4}){7}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){0,7}::[a-f0-9]{0,4}(:[a-f0-9]{1,4}){0,7})' | sed -n ''$ipv6linenumber''`
             echo $WanIp
             ;;
         '6')
@@ -89,7 +90,7 @@ function getPublicIp() {
             echo $WanIp
             ;;
         '5')
-            WanIp=`ubus call network.interface.$iface status | grep '"address"' | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}'`
+            WanIp=`ubus call network.interface.$iface status | grep '"address"' | grep -oE '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | sed -n ''$ipv4linenumber''`
             echo $WanIp
             ;;
         '6')
