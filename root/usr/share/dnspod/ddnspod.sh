@@ -13,6 +13,7 @@ ip_mode=2
 WanIp=""
 LastIpFile=/usr/share/dnspod/last.ip
 logfile="/var/log/ddnspod.log"
+logfile1="/var/log/ddnspod1.log"
 sleeptime=$(uci get dnspod.base_arg.time 2>/dev/null)
 enable=$(uci get dnspod.base_arg.enabled 2>/dev/null)
 IPtype=$(uci get dnspod.@ip_last[0].IPtype 2>/dev/null)
@@ -23,7 +24,7 @@ ipv6linenumber=$(uci get dnspod.@ip_last[0].ipv6linenumber 2>/dev/null)
 
 clean_log(){
 logrow=$(grep -c "" ${logfile})
-if [ $logrow -ge 100 ];then
+if [ $logrow -ge 3000 ];then
     cat /dev/null > ${logfile}
     echo "$(date "+%Y-%m-%d %H:%M:%S") Log条数超限，清空处理！" >> ${logfile}
 fi
