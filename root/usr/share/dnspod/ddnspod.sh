@@ -321,12 +321,6 @@ arDdnsCheck() {
 		grep -v "${3}-${2}.${1}" $LastIpFile > $LastIpFile.bak
 	fi
 	echo "${3}-${2}.${1} ${hostIP}" >> $LastIpFile.bak
- 	if grep -q "${2}.${1}" "/etc/hosts"; then
-		sed -i 's/^.*'"${2}.${1}"'/'"$hostIP"' '"${2}.${1}"'/g' "/etc/hosts"
-	else
-		sed -i '/${2}.${1}/d' "/etc/hosts"
-		echo "${hostIP} ${2}.${1}" >> "/etc/hosts"
-	fi
 	mv $LastIpFile.bak $LastIpFile
 
 	echo "--- Update dns zone"
